@@ -1,0 +1,22 @@
+{
+   "name": "miscellaneoutilities",
+   "version": "0.0.1",
+   "description": "Random command line utilities, I think. Try saying the repo name five timsd fefasdf",
+   "devDependencies": {
+      "ava": "^2.2.0",
+      "@types/node": "^12.6.8"
+   },
+   "scripts": {
+      "test": "ava"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Coalpha/miscellaneoutilities.git"
+   },
+   "author": "Cole Gannon",
+   "license": "MIT",
+   "bugs": {
+      "url": "https://github.com/Coalpha/miscellaneoutilities/issues"
+   },
+   "homepage": "https://github.com/Coalpha/miscellaneoutilities#readme"
+}

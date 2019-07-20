@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+const c = require("./colors");
+const stdin = require("./stdin");
+const colorDrain = require("./color-drain");
+
+function usage() {
+   console.error(''
+      + `usage:\n`
+      + `   ${require("./me")}\n`
+      + `   removes terminal colors from stdin`
+   );
+   process.exit(1);
+}
+
+void async function main() {
+   if (process.argv.length > 2) {
+      usage();
+   }
+   process.stdout.write(c.reset + colorDrain(await stdin));
+}();

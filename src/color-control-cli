@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+const c = require("./colors");
+const stdin = require("./stdin");
+const colorControl = require("./color-control");
+
+void async function main() {
+   colorControl(await stdin).forEach(([type, data]) => {
+      process.stdout.write(c.reset);
+      if (type === "color") {
+         process.stdout.write(`${c.purple}\\${c.grey}[\x1b[${data}${data}\x1b[0m${c.grey}]`);
+      } else if (type === "control") {
+         process.stdout.write(`${c.purple}\\${c.grey}{${c.yellow}${data}${c.grey}}`);
+      } else if (data === '\\') {
+         process.stdout.write(`${c.orange}\\\\${c.reset}`);
+      } else {
+         process.stdout.write(data);
+      }
+   });
+}();

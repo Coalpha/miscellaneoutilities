@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+void await function main() {
+   process.stdout.write(await require("./join"));
+}();

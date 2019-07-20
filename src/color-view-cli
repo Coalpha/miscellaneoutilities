@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+const c = require("./colors");
+const stdin = require("./stdin");
+const colorView = require("./color-view");
+
+function usage() {
+   console.error(''
+      + `usage:\n`
+      + `   ${require("./me")} [-h | --hex]\n`
+      + `   makes terminal color escape sequences visible.\n`
+      + `   Takes input from stdin\n`
+      + `hex:\n`
+      + `   prints \\x1b instead of \\033`
+   );
+   process.exit(1);
+}
+
+void async function main() {
+   const arg = process.argv[2];
+   const hex = arg === "-h" || arg === "--hex";
+   process.stdout.write(c.reset + colorView(await stdin, hex));
+}();

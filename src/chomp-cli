@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+const stdin = require("./stdin");
+const { chomp, chompLF, chompCRLF } = require("./chomp");
+
+function usage() {
+   console.error(''
+      + `Usage:\n`
+      + `   ${require("./me")} [mode]\n`
+      + `   removes the trailing newline from standard input\n`
+      + `   and prints the resulting string to stdout.\n`
+      + `Modes:\n`
+      + `  -a --any (default)\n`
+      + `  -l --lf\n`
+      + `  -c --crlf`
+   );
+   process.exit(1);
+}
+
+void async function main() {
+   const mode = process.argv[2];
+   let fn = chomp;
+   if (mode) {
+      switch (mode) {
+         case "-l":
+         case "--lf":
+            fn = chompLF;
+         case "-c":
+         case "--crlf":
+            fn = chompCRLF;
+            break;
+         case "-a":
+         case "--any":
+            break;
+         default: usage();
+      }
+   }
+   process.stdout.write(fn(await stdin));
+}();

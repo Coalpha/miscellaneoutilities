@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+const stdin = require("./stdin");
+const control = require("./control");
+
+void async function main() {
+   control(await stdin).forEach(([isControl, data]) => {
+      process.stout.write(
+         isControl ? (
+            `\\{${data}}`
+         ) : (
+            data === '\\' ? (
+               "\\\\"
+            ) : (
+               data
+            )
+         )
+      );
+   });
+}();
