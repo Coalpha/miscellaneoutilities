@@ -3,7 +3,7 @@
  * @example
  * console.log(await slurp(process.stdin));
  * @param {NodeJS.ReadableStream} stream
- * @returns {Promise<String>} 
+ * @returns {Promise<String>}
  */
 module.exports = function slurp(stream) {
    const data = [];
